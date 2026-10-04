@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry Nadia Sister</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe4ec, #e9dcff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .card {
+    width: min(92vw, 430px);
+    min-height: 520px;
+    background: rgba(255,255,255,.9);
+    border-radius: 28px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(80,40,100,.18);
+    position: relative;
+  }
+  h1 { color: #d6336c; margin: 10px 0 18px; font-size: 30px; }
+  p { color: #444; font-size: 19px; line-height: 1.55; }
+  .heart { font-size: 55px; }
+  .buttons {
+    position: relative;
+    height: 150px;
+    margin-top: 25px;
+  }
+  button {
+    border: 0;
+    border-radius: 14px;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    transition: left .18s, top .18s, transform .15s;
+  }
+  #yes { background: #20c997; color: white; left: 18%; top: 45px; }
+  #no { background: #ff6b6b; color: white; left: 58%; top: 45px; }
+  button:active { transform: scale(.95); }
+  .page2 { display:none; }
+  .messages {
+    text-align: left;
+    margin: 25px 0;
+  }
+  .msg {
+    background: #fff0f5;
+    border-radius: 15px;
+    padding: 13px 15px;
+    margin: 12px 0;
+    color: #555;
+  }
+  .from {
+    margin-top: 35px;
+    text-align: right;
+    color: #9c36b5;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .back {
+    position: static;
+    background: #9c36b5;
+    color: white;
+    margin-top: 15px;
+  }
+</style>
+</head>
+<body>
+  <div class="card" id="page1">
+    <div class="heart">💗</div>
+    <h1>Sorry Nadia Sister</h1>
+    <p>I am really sorry. Please forgive me.</p>
+    <p><b>Did you forgive me?</b></p>
+
+    <div class="buttons">
+      <button id="yes">Yes ❤️</button>
+      <button id="no">No 😅</button>
+    </div>
+  </div>
+
+  <div class="card page2" id="page2">
+    <div class="heart">🥹💗</div>
+    <h1>Thank You, Nadia Sister!</h1>
+    <p><b>Sorry Nadia Sister</b></p>
+
+    <div class="messages">
+      <div class="msg">1. Sisters and brothers may argue, but the bond always stays special. ❤️</div>
+      <div class="msg">2. A little misunderstanding should never become bigger than our love and respect. 🤝</div>
+      <div class="msg">3. No matter what happens, family is family — and I am always sorry when I hurt you. 💕</div>
+    </div>
+
+    <p>Thank you for forgiving me! 😊</p>
+    <div class="from">From Mirza ❤️</div>
+    <button class="back" id="back">Back</button>
+  </div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+const back = document.getElementById("back");
+
+function moveNo() {
+  const area = document.querySelector(".buttons");
+  const maxX = area.clientWidth - noBtn.offsetWidth;
+  const maxY = area.clientHeight - noBtn.offsetHeight;
+  noBtn.style.left = Math.max(0, Math.random() * maxX) + "px";
+  noBtn.style.top = Math.max(0, Math.random() * maxY) + "px";
+}
+noBtn.addEventListener("click", moveNo);
+noBtn.addEventListener("mouseenter", moveNo);
+yesBtn.addEventListener("click", () => {
+  page1.style.display = "none";
+  page2.style.display = "block";
+});
+back.addEventListener("click", () => {
+  page2.style.display = "none";
+  page1.style.display = "block";
+});
+</script>
+</body>
+</html>
